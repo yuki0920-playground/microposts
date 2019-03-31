@@ -11,7 +11,7 @@ class User < ApplicationRecord
   
   #お気に入り機能追加用
   has_many :favorites
-  has_many :microposts, through: :favorites, source: :micropost
+  has_many :favposts, through: :favorites, source: :micropost
   
   #お気に入り追加
   def like(micropost)
@@ -25,8 +25,8 @@ class User < ApplicationRecord
   end
   
   #お気にり登録判定
-  def  micropost?(micropost)
-    self.microposts.include?(micropost)
+  def  favpost?(micropost)
+    self.favposts.include?(micropost)
   end
   
 
