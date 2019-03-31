@@ -5,10 +5,10 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
-      flash[:success] = 'メッセージの投稿に失敗しました'
+      flash[:success] = 'メッセージの投稿に成功しました'
       redirect_to root_url
     else
-      @micropots = current_user.microposts.order('created_at').page(params[:page])
+      @microposts = current_user.feed_microposts.order('created_at DESC').page(params[:page])
       flash.now[:danger] = 'メッセージの投稿に失敗しました'
       render 'toppages/index'
     end

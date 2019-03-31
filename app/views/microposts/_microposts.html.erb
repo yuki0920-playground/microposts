@@ -14,8 +14,12 @@
         <div>
            <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
         </div>
+        <!--お気に入りボタン登録-->
+        <div>
+          <%= render 'favorites/like_button', micropost: micropost %>
+        </div>
       </div>
     </li>
   <% end %>
-  <%= paginate microposts %>
+  <%= paginate @microposts %>
 </ul>
